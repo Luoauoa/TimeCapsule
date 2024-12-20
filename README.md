@@ -1,2 +1,2 @@
 # TimeCapsule
-This is the ==Official Implementation== of the paper "TimeCapsule: Solving the Jigsaw Puzzel of ..." 
+This is the **Official Implementation** of the paper "TimeCapsule: Solving the Jigsaw Puzzle of ..." 

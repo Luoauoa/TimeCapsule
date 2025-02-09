@@ -1,4 +1,4 @@
-export CUDA_VISIBLE_DEVICES=3
+export CUDA_VISIBLE_DEVICES=2
 
 if [ ! -d "./logs" ]; then
     mkdir ./logs
@@ -32,20 +32,20 @@ random_seed=2021
 #       --features M \
 #       --jepa 1 \
 #       --revin 1\
-#       --n_block 1\
+#       --n_block 0\
 #       --level_dim 1\
 #       --seq_len $seq_len \
 #       --pred_len $pred_len \
 #       --n_heads 1 \
 #       --d_compress 1 8 1\
 #       --d_model 16 \
-#       --d_ff  1024 \
-#       --gamma 0.5 \
-#       --dropout 0.7\
+#       --d_ff  512 \
+#       --gamma 0.3 \
+#       --dropout 0.6\
 #       --des 'Exp' \
-#       --patience 15\
+#       --patience 10\
 #       --train_epochs 20 \
-#       --itr 1 --batch_size 64 --learning_rate 3e-4 >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
+#       --itr 1 --batch_size 64 --learning_rate 6e-4 >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
 # done
 
 # for pred_len in 192
@@ -77,36 +77,35 @@ random_seed=2021
 #       --itr 1 --batch_size 64 --learning_rate 5e-4 >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
 # done
 
-# for pred_len in 336
-# do
-#     python -u run_longExp.py \
-#       --random_seed $random_seed \
-#       --is_training 1 \
-#       --root_path $root_path_name \
-#       --data_path ${data_path_name[0]} \
-#       --model_id ${model_id_name[0]}'_'$seq_len'_'$pred_len \
-#       --model $model_name \
-#       --data ${data_name[0]} \
-#       --features M \
-#       --jepa 1 \
-#       --revin 1\
-#       --n_block 1\
-#       --level_dim 1\
-#       --seq_len $seq_len \
-#       --pred_len $pred_len \
-#       --n_heads 1 \
-#       --d_compress 1 8 1\
-#       --d_model 64 \
-#       --d_ff  1024 \
-#       --gamma 0.3 \
-#       --dropout 0.6\
-#       --des 'Exp' \
-#       --patience 10\
-#       --train_epochs 20 \
-#       --itr 1 --batch_size 64 --learning_rate 2e-4 >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
-# done
+for pred_len in 336
+do
+    python -u run_longExp.py \
+      --random_seed $random_seed \
+      --is_training 1 \
+      --root_path $root_path_name \
+      --data_path ${data_path_name[0]} \
+      --model_id ${model_id_name[0]}'_'$seq_len'_'$pred_len \
+      --model $model_name \
+      --data ${data_name[0]} \
+      --features M \
+      --jepa 1 \
+      --revin 1\
+      --n_block 1\
+      --level_dim 1\
+      --seq_len $seq_len \
+      --pred_len $pred_len \
+      --n_heads 1 \
+      --d_compress 1 8 1\
+      --d_model 64 \
+      --d_ff  1024 \
+      --gamma 0.3 \
+      --dropout 0.6\
+      --des 'Exp' \
+      --patience 10\
+      --train_epochs 20 \
+      --itr 1 --batch_size 64 --learning_rate 2e-4 >logs/LongForecasting/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
+done
 
-# 433 451
 for pred_len in 720
 do
     python -u run_longExp.py \

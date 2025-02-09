@@ -133,5 +133,3 @@ random_seed=2021
 #       --gamma 0.7 \
 #       --itr 1 --batch_size 64 --learning_rate 8e-4 >logs/LongForecasting02/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
 # done
-
-# change gamma 0.5

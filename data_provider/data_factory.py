@@ -18,8 +18,8 @@ def data_provider(args, flag):
 
     if flag == 'test':
         shuffle_flag = False
-        drop_last = False
-        batch_size = args.batch_size
+        drop_last = False             # ensure the truthness of test loss
+        batch_size = args.batch_size  # this will affect the value of validation
         freq = args.freq
     elif flag == 'pred':
         shuffle_flag = False

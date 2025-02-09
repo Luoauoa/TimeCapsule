@@ -1,0 +1,112 @@
+Args in experiment:
+Namespace(random_seed=2021, is_training=1, model_id='PEMS08_512_336', model='TimeCapsule', data='PEMS', root_path='../dataset/PEMS/', data_path='PEMS08.npz', features='M', target='OT', freq='h', checkpoints='./checkpoints/', seq_len=512, label_len=48, pred_len=336, fc_dropout=0.05, head_dropout=0.0, patch_len=16, stride=8, padding_patch='end', revin=1, affine=0, subtract_last=0, decomposition=0, kernel_size=25, individual=0, embed_type=0, enc_in=7, dec_in=7, c_out=7, d_model=128, n_heads=4, e_layers=2, d_layers=1, d_ff=2048, moving_avg=25, factor=1, distil=True, dropout=0.3, embed='timeF', activation='gelu', output_attention=False, do_predict=False, level_dim=1, d_compress=[4, 8, 4], jepa=1, n_block=1, num_workers=10, itr=1, gamma=0.9, train_epochs=60, batch_size=32, patience=15, learning_rate=0.0008, des='Exp', loss='mse', lradj='type3', pct_start=0.3, use_amp=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0,1,2,3', test_flop=False)
+Use GPU: cuda:0
+train 9866
+val 2724
+test 2725
+[INFO] Register count_linear() for <class 'torch.nn.modules.linear.Linear'>.
+[INFO] Register zero_ops() for <class 'torch.nn.modules.dropout.Dropout'>.
+[INFO] Register count_normalization() for <class 'torch.nn.modules.batchnorm.BatchNorm1d'>.
+[INFO] Register zero_ops() for <class 'torch.nn.modules.container.Sequential'>.
+Flops:  4.1197G
+params:  23.2641M
+>>>>>>>start training : PEMS08_512_336_TimeCapsule_PEMS_ft[4, 8, 4]_slM_ll512_pl48_dm336_nh128_el4_dl1_df2048_fc1_ebtimeF_dtTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+	iters: 100, epoch: 1 | loss: 0.1255941
+	speed: 0.0798s/iter; left time: 1467.3632s
+	iters: 200, epoch: 1 | loss: 0.0857594
+	speed: 0.0654s/iter; left time: 1195.3710s
+	iters: 300, epoch: 1 | loss: 0.1021889
+	speed: 0.0655s/iter; left time: 1191.5724s
+Epoch: 1 cost time: 20.79481267929077
+Epoch: 1, Steps: 308 | Train Loss: 0.1169166 Jepa Loss: 0.1716011 Vali Loss: 0.1283083 Test Loss: 0.3896682
+Validation loss (0.128308).  Saving model ...
+Validation loss decreased (inf --> 0.128308).  Saving model ...
+	iters: 100, epoch: 2 | loss: 0.0826098
+	speed: 0.1693s/iter; left time: 3059.3505s
+	iters: 200, epoch: 2 | loss: 0.0847428
+	speed: 0.0667s/iter; left time: 1199.6341s
+	iters: 300, epoch: 2 | loss: 0.0974581
+	speed: 0.0653s/iter; left time: 1167.3038s
+Epoch: 2 cost time: 21.248798370361328
+Epoch: 2, Steps: 308 | Train Loss: 0.0947538 Jepa Loss: 0.0856006 Vali Loss: 0.1224022 Test Loss: 0.3780203
+Validation loss (0.122402).  Saving model ...
+Validation loss decreased (0.128308 --> 0.122402).  Saving model ...
+	iters: 100, epoch: 3 | loss: 0.0817549
+	speed: 0.1878s/iter; left time: 3336.5940s
+	iters: 200, epoch: 3 | loss: 0.0802577
+	speed: 0.0597s/iter; left time: 1055.3429s
+	iters: 300, epoch: 3 | loss: 0.0876438
+	speed: 0.0629s/iter; left time: 1104.8093s
+Epoch: 3 cost time: 20.35430383682251
+Epoch: 3, Steps: 308 | Train Loss: 0.0852368 Jepa Loss: 0.0682875 Vali Loss: 0.1161310 Test Loss: 0.3481790
+Validation loss (0.116131).  Saving model ...
+Validation loss decreased (0.122402 --> 0.116131).  Saving model ...
+	iters: 100, epoch: 4 | loss: 0.0848950
+	speed: 0.1913s/iter; left time: 3340.0427s
+	iters: 200, epoch: 4 | loss: 0.0816084
+	speed: 0.0672s/iter; left time: 1166.9685s
+	iters: 300, epoch: 4 | loss: 0.0830804
+	speed: 0.0657s/iter; left time: 1132.9959s
+Epoch: 4 cost time: 21.31017255783081
+Epoch: 4, Steps: 308 | Train Loss: 0.0821805 Jepa Loss: 0.0622476 Vali Loss: 0.1125295 Test Loss: 0.3488390
+Validation loss (0.112529).  Saving model ...
+Validation loss decreased (0.116131 --> 0.112529).  Saving model ...
+	iters: 100, epoch: 5 | loss: 0.0734401
+	speed: 0.1985s/iter; left time: 3404.8097s
+	iters: 200, epoch: 5 | loss: 0.0735284
+	speed: 0.0727s/iter; left time: 1239.4045s
+	iters: 300, epoch: 5 | loss: 0.0811420
+	speed: 0.0713s/iter; left time: 1208.0918s
+Epoch: 5 cost time: 22.949075937271118
+Epoch: 5, Steps: 308 | Train Loss: 0.0788806 Jepa Loss: 0.0563538 Vali Loss: 0.1093818 Test Loss: 0.3422463
+Validation loss (0.109382).  Saving model ...
+Validation loss decreased (0.112529 --> 0.109382).  Saving model ...
+	iters: 100, epoch: 6 | loss: 0.0782602
+	speed: 0.1915s/iter; left time: 3225.7865s
+	iters: 200, epoch: 6 | loss: 0.0692644
+	speed: 0.0734s/iter; left time: 1228.0258s
+	iters: 300, epoch: 6 | loss: 0.0769730
+	speed: 0.0680s/iter; left time: 1131.6763s
+Epoch: 6 cost time: 22.482054948806763
+Epoch: 6, Steps: 308 | Train Loss: 0.0769617 Jepa Loss: 0.0536550 Vali Loss: 0.1094323 Test Loss: 0.3350248
+Validation loss (0.109432).  Saving model ...
+EarlyStopping counter: 1 out of 15
+	iters: 100, epoch: 7 | loss: 0.0714119
+	speed: 0.1786s/iter; left time: 2952.5500s
+	iters: 200, epoch: 7 | loss: 0.0775913
+	speed: 0.0669s/iter; left time: 1099.2189s
+	iters: 300, epoch: 7 | loss: 0.0755890
+	speed: 0.0666s/iter; left time: 1087.6011s
+Epoch: 7 cost time: 21.364181756973267
+Epoch: 7, Steps: 308 | Train Loss: 0.0748101 Jepa Loss: 0.0518175 Vali Loss: 0.1086925 Test Loss: 0.3397695
+Validation loss (0.108692).  Saving model ...
+Validation loss decreased (0.109382 --> 0.108692).  Saving model ...
+	iters: 100, epoch: 8 | loss: 0.0760029
+	speed: 0.1948s/iter; left time: 3161.3962s
+	iters: 200, epoch: 8 | loss: 0.0786588
+	speed: 0.0718s/iter; left time: 1158.3782s
+	iters: 300, epoch: 8 | loss: 0.0719405
+	speed: 0.0710s/iter; left time: 1137.0730s
+Epoch: 8 cost time: 22.96370530128479
+Epoch: 8, Steps: 308 | Train Loss: 0.0747439 Jepa Loss: 0.0529681 Vali Loss: 0.1079755 Test Loss: 0.3459552
+Validation loss (0.107975).  Saving model ...
+Validation loss decreased (0.108692 --> 0.107975).  Saving model ...
+	iters: 100, epoch: 9 | loss: 0.0764423
+	speed: 0.1927s/iter; left time: 3067.5292s
+	iters: 200, epoch: 9 | loss: 0.0803535
+	speed: 0.0713s/iter; left time: 1127.1006s
+	iters: 300, epoch: 9 | loss: 0.0746061
+	speed: 0.0716s/iter; left time: 1125.1855s
+Epoch: 9 cost time: 22.799121379852295
+Epoch: 9, Steps: 308 | Train Loss: 0.0741414 Jepa Loss: 0.0547849 Vali Loss: 0.1074653 Test Loss: 0.3342723
+Validation loss (0.107465).  Saving model ...
+Validation loss decreased (0.107975 --> 0.107465).  Saving model ...
+	iters: 100, epoch: 10 | loss: 0.0732085
+	speed: 0.2020s/iter; left time: 3152.9279s
+	iters: 200, epoch: 10 | loss: 0.0720481
+	speed: 0.0764s/iter; left time: 1184.7577s
+	iters: 300, epoch: 10 | loss: 0.0753997
+	speed: 0.0770s/iter; left time: 1186.1602s
+Epoch: 10 cost time: 24.291950702667236
+Epoch: 10, Steps: 308 | Train Loss: 0.0737195 Jepa Loss: 0.0531774 Vali Loss: 0.1051810 Test Loss: 0.3304448
+Validation loss (0.105181).  Saving model ...

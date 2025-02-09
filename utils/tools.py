@@ -126,3 +126,27 @@ def ema_update(updated_value, new_value, decay=0.996, type='model'):
     # else
     updated_value = decay * updated_value + (1 - decay) * new_value
     return updated_value
+
+
+def mean_filter(seq, window_size=10):
+    B, T, V  = seq.shape
+    seq_norm = []
+    seq_filter = []
+    stds = []
+    if T <= 2 * window_size:
+      print("window size is too long")  
+    for i in range(T):
+        seq_win = None
+        if i < window_size:
+            seq_win = seq[:, :i+window_size, :]
+        elif i >= T- 1 - window_size:
+            seq_win = seq[:, i-window_size:, :]
+        else: 
+            seq_win = seq[:, i-window_size:i+window_size, :]
+        mean = torch.mean(seq_win, dim=1)
+        std = torch.std(seq_win, dim=1)
+        seq_filter.append(mean)
+        seq_norm.append((seq[:, i, :] - mean) / (std + 1e-8))
+        stds.append(std)
+
+    return torch.stack(seq_norm, dim=1), torch.stack(seq_filter, dim=1), torch.stack(stds, dim=1)

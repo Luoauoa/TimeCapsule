@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 import copy
 import numpy as np
-from utils.tools import ema_update
+from utils.tools import ema_update, mean_filter
 from layers.SelfAttention_Family import FullAttention, AttentionLayer, MoAttention
 from layers.PatchTST_layers import *
 from layers.RevIN import RevIN
@@ -98,7 +98,6 @@ class Model(nn.Module):
         y_hat = self.level_weight(y_top).squeeze()  # (B, T_pred, V)
         if self.rev_in:
             y_hat = self.revin_layer(y_hat, 'denorm')
-
         return y_hat, rep, Y_tilde, store_x
     
 

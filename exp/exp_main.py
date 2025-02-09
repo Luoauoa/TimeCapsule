@@ -1,7 +1,7 @@
 from data_provider.data_factory import data_provider
 from exp.exp_basic import Exp_Basic
-from models import Informer, Autoformer, Transformer, DLinear, Linear, NLinear, PatchTST, TimeCapsule
-from utils.tools import EarlyStopping, adjust_learning_rate, visual, test_params_flop, ema_update
+from models import  TimeCapsule
+from utils.tools import EarlyStopping, adjust_learning_rate, visual, test_params_flop, ema_update, mean_filter
 from utils.metrics import metric
 from thop import profile
 
@@ -40,13 +40,6 @@ class Exp_Main(Exp_Basic):
 
     def _build_model(self):
         model_dict = {
-            'Autoformer': Autoformer,
-            'Transformer': Transformer,
-            'Informer': Informer,
-            'DLinear': DLinear,
-            'NLinear': NLinear,
-            'Linear': Linear,
-            'PatchTST': PatchTST,
             'TimeCapsule': TimeCapsule,   # ours
         }
         if 'Time' in self.args.model:
@@ -115,7 +108,7 @@ class Exp_Main(Exp_Basic):
                         else:
                             outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
                 
-                if (i + 1) % 50 == 0:
+                if (i + 1) % 500 == 0:
                     speed = (time.time() - time_now) / iter_count
                     print('\tinference speed: {:.4f}s/iter'.format(speed))
                     iter_count = 0
@@ -209,15 +202,19 @@ class Exp_Main(Exp_Basic):
                     if L > 0:
                         if self.args.jepa:
                             batch_y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
-                            # this may change the dynamics of backpropagation due to the dropout
+                            # The following may change the dynamics of backpropagation due to the dropout
                             capsule_y, _ = self.model.jepa_forward(batch_x.shape, batch_y) 
-                            loss_j = criterion2(outputs[1], capsule_y)
+                            loss_j = criterion2(outputs[1], capsule_y) 
                             jepa_loss.append(loss_j.item())
                         outputs = outputs[0][:, -self.args.pred_len:, f_dim:]
                     else:
                         outputs = outputs[:, -self.args.pred_len:, f_dim:]
                     loss_o = criterion2(outputs, batch_y[:, -self.args.pred_len:, f_dim:])
-                    loss = loss_o + loss_j
+                    if epoch <= 100:
+                        loss = loss_o + loss_j
+                    else:
+                        loss = loss_o 
+
 
                     train_loss.append(loss_o.item())
 
@@ -326,11 +323,43 @@ class Exp_Main(Exp_Basic):
                     Ys = outputs[-2]
                 preds += list(pred.flatten())
                 trues += list(true.flatten())
+
+                x_sta, x_mean, x_std = mean_filter(batch_x)
+                y_sta, y_mean, y_std = mean_filter(batch_y[:, -self.args.pred_len:, f_dim:], 5)
+                pre_sta, pre_mean, pre_std = mean_filter(outputs[0][:, -self.args.pred_len:, f_dim:], 5)
+
+                x_sta = x_sta.detach().cpu().numpy()
+                x_mean = x_mean.detach().cpu().numpy()
+                x_std = x_std.detach().cpu().numpy()
+
+                y_sta = y_sta.detach().cpu().numpy()
+                y_mean = y_mean.detach().cpu().numpy()
+                y_std = y_std.detach().cpu().numpy()
+
+                pre_sta = pre_sta.detach().cpu().numpy()
+                pre_mean = pre_mean.detach().cpu().numpy()
+                pre_std = pre_std.detach().cpu().numpy()
+
                 if i % 20 == 0:
                     input = batch_x.detach().cpu().numpy()
                     gt = np.concatenate((input[0, :, -1], true[0, :, -1]), axis=0)
                     pd = np.concatenate((input[0, :, -1], pred[0, :, -1]), axis=0)
                     visual(gt, pd, os.path.join(folder_path, str(i) + '.pdf'))
+
+                    # sta
+                    gt_sta = np.concatenate((x_sta[0, :, -1], y_sta[0, :, -1]), axis=0)
+                    pd_sta = np.concatenate((x_sta[0, :, -1], pre_sta[0, :, -1]), axis=0)
+                    visual(gt_sta, pd_sta, os.path.join(folder_path, str(i) + 'sta.pdf'))
+
+                    # mean
+                    gt_mean = np.concatenate((x_mean[0, :, -1], y_mean[0, :, -1]), axis=0)
+                    pd_mean = np.concatenate((x_mean[0, :, -1], pre_mean[0, :, -1]), axis=0)
+                    visual(gt_mean, pd_mean, os.path.join(folder_path, str(i) + 'mean.pdf'))
+
+                    # std
+                    gt_std = np.concatenate((x_std[0, :, -1], y_std[0, :, -1]), axis=0)
+                    pd_std = np.concatenate((x_std[0, :, -1], pre_std[0, :, -1]), axis=0)
+                    visual(gt_std, pd_std, os.path.join(folder_path, str(i) + 'std.pdf'))
 
         if self.args.test_flop:
             test_params_flop((batch_x.shape[1],batch_x.shape[2]))

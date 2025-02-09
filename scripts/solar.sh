@@ -1,4 +1,4 @@
-export CUDA_VISIBLE_DEVICES=2
+export CUDA_VISIBLE_DEVICES=3
 
 if [ ! -d "./logs" ]; then
     mkdir ./logs
@@ -73,7 +73,7 @@ do
       --des 'Exp' \
       --patience 10\
       --train_epochs 50 \
-      --itr 1 --batch_size 64 --learning_rate 2e-3 >logs/LongForecasting02/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
+      --itr 1 --batch_size 64 --learning_rate 1e-3 >logs/LongForecasting02/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
 done
 
 for pred_len in 336 
@@ -102,10 +102,10 @@ do
       --des 'Exp' \
       --patience 10\
       --train_epochs 50 \
-      --itr 1 --batch_size 64 --learning_rate 2e-3 >logs/LongForecasting02/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
+      --itr 1 --batch_size 64 --learning_rate 1e-3 >logs/LongForecasting02/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
 done
 
-# (4, 8, 4) will cause JEPA to fail convergence
+# (4, 8, 4) will cause fail convergence of JEPA
 for pred_len in  720  
 do
     python -u run_longExp.py \
@@ -132,5 +132,5 @@ do
       --des 'Exp' \
       --patience 10\
       --train_epochs 50 \
-      --itr 1 --batch_size 64 --learning_rate 2e-3 >logs/LongForecasting02/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
+      --itr 1 --batch_size 64 --learning_rate 1e-3 >logs/LongForecasting02/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
 done

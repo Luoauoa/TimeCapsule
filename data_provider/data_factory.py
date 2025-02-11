@@ -19,7 +19,7 @@ def data_provider(args, flag):
     if flag == 'test':
         shuffle_flag = False
         drop_last = False             # this ensures the truthness of the final test loss
-        batch_size = args.batch_size  # this will affect the value of test loss showed in the training phase and also the training dynamics due to the 'BatchNormalization'
+        batch_size = args.batch_size  # this will affect the value of test loss shown in the training phase and also the training dynamics due to the 'BatchNormalization'
         freq = args.freq
     elif flag == 'pred':
         shuffle_flag = False

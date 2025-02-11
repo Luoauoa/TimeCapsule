@@ -245,8 +245,8 @@ class Exp_Main(Exp_Basic):
             train_loss = np.mean(train_loss)
             jepa_loss = np.mean(jepa_loss)
             jepa_losses.append(jepa_loss)   # record the variation of JEPA for plotting
-            vali_loss = self.vali(self.vali_data, self.vali_loader, criterion2)  # use the same loss function as training
-            test_loss = self.vali(self.test_data, self.test_loader, criterion)   # use the common used indicator
+            vali_loss = self.vali(self.vali_data, self.vali_loader, criterion2)  # use the same loss function as in training phase
+            test_loss = self.vali(self.test_data, self.test_loader, criterion)   # use test indicator
 
             print("Epoch: {0}, Steps: {1} | Train Loss: {2:.7f} Jepa Loss: {3:.7f}"
                   " Vali Loss: {4:.7f} Test Loss: {5:.7f}".format(epoch + 1, train_steps, train_loss, jepa_loss, vali_loss, test_loss))
@@ -324,42 +324,42 @@ class Exp_Main(Exp_Basic):
                 preds += list(pred.flatten())
                 trues += list(true.flatten())
 
-                x_sta, x_mean, x_std = mean_filter(batch_x)
-                y_sta, y_mean, y_std = mean_filter(batch_y[:, -self.args.pred_len:, f_dim:], 5)
-                pre_sta, pre_mean, pre_std = mean_filter(outputs[0][:, -self.args.pred_len:, f_dim:], 5)
+                # x_sta, x_mean, x_std = mean_filter(batch_x)
+                # y_sta, y_mean, y_std = mean_filter(batch_y[:, -self.args.pred_len:, f_dim:], 5)
+                # pre_sta, pre_mean, pre_std = mean_filter(outputs[0][:, -self.args.pred_len:, f_dim:], 5)
 
-                x_sta = x_sta.detach().cpu().numpy()
-                x_mean = x_mean.detach().cpu().numpy()
-                x_std = x_std.detach().cpu().numpy()
+                # x_sta = x_sta.detach().cpu().numpy()
+                # x_mean = x_mean.detach().cpu().numpy()
+                # x_std = x_std.detach().cpu().numpy()
 
-                y_sta = y_sta.detach().cpu().numpy()
-                y_mean = y_mean.detach().cpu().numpy()
-                y_std = y_std.detach().cpu().numpy()
+                # y_sta = y_sta.detach().cpu().numpy()
+                # y_mean = y_mean.detach().cpu().numpy()
+                # y_std = y_std.detach().cpu().numpy()
 
-                pre_sta = pre_sta.detach().cpu().numpy()
-                pre_mean = pre_mean.detach().cpu().numpy()
-                pre_std = pre_std.detach().cpu().numpy()
+                # pre_sta = pre_sta.detach().cpu().numpy()
+                # pre_mean = pre_mean.detach().cpu().numpy()
+                # pre_std = pre_std.detach().cpu().numpy()
 
-                if i % 20 == 0:
-                    input = batch_x.detach().cpu().numpy()
-                    gt = np.concatenate((input[0, :, -1], true[0, :, -1]), axis=0)
-                    pd = np.concatenate((input[0, :, -1], pred[0, :, -1]), axis=0)
-                    visual(gt, pd, os.path.join(folder_path, str(i) + '.pdf'))
+                # if i % 20 == 0:
+                #     input = batch_x.detach().cpu().numpy()
+                #     gt = np.concatenate((input[0, :, -1], true[0, :, -1]), axis=0)
+                #     pd = np.concatenate((input[0, :, -1], pred[0, :, -1]), axis=0)
+                #     visual(gt, pd, os.path.join(folder_path, str(i) + '.pdf'))
 
-                    # sta
-                    gt_sta = np.concatenate((x_sta[0, :, -1], y_sta[0, :, -1]), axis=0)
-                    pd_sta = np.concatenate((x_sta[0, :, -1], pre_sta[0, :, -1]), axis=0)
-                    visual(gt_sta, pd_sta, os.path.join(folder_path, str(i) + 'sta.pdf'))
+                #     # sta
+                #     gt_sta = np.concatenate((x_sta[0, :, -1], y_sta[0, :, -1]), axis=0)
+                #     pd_sta = np.concatenate((x_sta[0, :, -1], pre_sta[0, :, -1]), axis=0)
+                #     visual(gt_sta, pd_sta, os.path.join(folder_path, str(i) + 'sta.pdf'))
 
-                    # mean
-                    gt_mean = np.concatenate((x_mean[0, :, -1], y_mean[0, :, -1]), axis=0)
-                    pd_mean = np.concatenate((x_mean[0, :, -1], pre_mean[0, :, -1]), axis=0)
-                    visual(gt_mean, pd_mean, os.path.join(folder_path, str(i) + 'mean.pdf'))
+                #     # mean
+                #     gt_mean = np.concatenate((x_mean[0, :, -1], y_mean[0, :, -1]), axis=0)
+                #     pd_mean = np.concatenate((x_mean[0, :, -1], pre_mean[0, :, -1]), axis=0)
+                #     visual(gt_mean, pd_mean, os.path.join(folder_path, str(i) + 'mean.pdf'))
 
-                    # std
-                    gt_std = np.concatenate((x_std[0, :, -1], y_std[0, :, -1]), axis=0)
-                    pd_std = np.concatenate((x_std[0, :, -1], pre_std[0, :, -1]), axis=0)
-                    visual(gt_std, pd_std, os.path.join(folder_path, str(i) + 'std.pdf'))
+                #     # std
+                #     gt_std = np.concatenate((x_std[0, :, -1], y_std[0, :, -1]), axis=0)
+                #     pd_std = np.concatenate((x_std[0, :, -1], pre_std[0, :, -1]), axis=0)
+                #     visual(gt_std, pd_std, os.path.join(folder_path, str(i) + 'std.pdf'))
 
         if self.args.test_flop:
             test_params_flop((batch_x.shape[1],batch_x.shape[2]))

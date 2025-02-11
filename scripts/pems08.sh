@@ -89,20 +89,20 @@ do
       --features M \
       --jepa 1 \
       --revin 1\
-      --n_block 1\
+      --n_block 0\
       --level_dim 1\
       --seq_len $seq_len \
       --pred_len $pred_len \
       --n_heads 4 \
       --d_compress 4 8 4\
       --d_model 128 \
-      --d_ff 2048 \
-      --dropout 0.3\
+      --d_ff 1024 \
+      --dropout 0.1\
       --des 'Exp' \
       --train_epochs 60 \
       --patience 15 \
       --gamma 0.9\
-      --itr 1 --batch_size 32 --learning_rate 8e-4 >logs/LongForecasting02/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
+      --itr 1 --batch_size 32 --learning_rate 2e-3 >logs/LongForecasting02/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
 done
 
 # for pred_len in 720

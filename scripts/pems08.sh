@@ -123,7 +123,7 @@ do
       --seq_len $seq_len \
       --pred_len $pred_len \
       --n_heads 1 \
-      --d_compress 1 14 1\
+      --d_compress 1 16 1\
       --d_model 256 \
       --d_ff 2048 \
       --dropout 0.2 \

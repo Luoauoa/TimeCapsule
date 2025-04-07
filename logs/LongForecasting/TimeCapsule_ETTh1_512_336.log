@@ -1,0 +1,76 @@
+Args in experiment:
+Namespace(random_seed=2021, is_training=1, model_id='ETTh1_512_336', model='TimeCapsule', data='ETTh1', root_path='../dataset/ETT-small/', data_path='ETTh1.csv', features='M', target='OT', freq='h', checkpoints='./checkpoints/', seq_len=512, label_len=48, pred_len=336, fc_dropout=0.05, head_dropout=0.0, patch_len=16, stride=8, padding_patch='end', revin=1, affine=0, subtract_last=0, decomposition=0, kernel_size=25, individual=0, embed_type=0, enc_in=7, dec_in=7, c_out=7, d_model=64, n_heads=1, e_layers=2, d_layers=1, d_ff=1024, moving_avg=25, factor=1, distil=True, dropout=0.6, embed='timeF', activation='gelu', output_attention=False, do_predict=False, level_dim=1, d_compress=[1, 8, 1], jepa=1, n_block=1, num_workers=10, itr=1, gamma=0.3, train_epochs=20, batch_size=64, patience=10, learning_rate=0.0002, des='Exp', loss='mse', lradj='type3', pct_start=0.3, use_amp=False, use_gpu=True, gpu=0, use_multi_gpu=False, devices='0,1,2,3', test_flop=False)
+Use GPU: cuda:0
+train 7793
+val 2545
+test 2545
+[INFO] Register count_linear() for <class 'torch.nn.modules.linear.Linear'>.
+[INFO] Register zero_ops() for <class 'torch.nn.modules.dropout.Dropout'>.
+[INFO] Register count_normalization() for <class 'torch.nn.modules.batchnorm.BatchNorm1d'>.
+[INFO] Register zero_ops() for <class 'torch.nn.modules.container.Sequential'>.
+Flops:  0.0308G
+params:  4.3036M
+>>>>>>>start training : ETTh1_512_336_TimeCapsule_ETTh1_ft[1, 8, 1]_slM_ll512_pl48_dm336_nh64_el1_dl1_df1024_fc1_ebtimeF_dtTrue_Exp_0>>>>>>>>>>>>>>>>>>>>>>>>>>
+	iters: 100, epoch: 1 | loss: 0.2125069
+	speed: 0.0558s/iter; left time: 129.4158s
+Epoch: 1 cost time: 5.714289426803589
+Epoch: 1, Steps: 121 | Train Loss: 0.2156921 Jepa Loss: 0.3579905 Vali Loss: 0.4233122 Test Loss: 0.4448112
+Validation loss (0.423312).  Saving model ...
+Validation loss decreased (inf --> 0.423312).  Saving model ...
+	iters: 100, epoch: 2 | loss: 0.1994272
+	speed: 0.0786s/iter; left time: 172.8680s
+Epoch: 2 cost time: 6.434988021850586
+Epoch: 2, Steps: 121 | Train Loss: 0.1951114 Jepa Loss: 0.3047237 Vali Loss: 0.4418148 Test Loss: 0.4377457
+Validation loss (0.441815).  Saving model ...
+EarlyStopping counter: 1 out of 10
+	iters: 100, epoch: 3 | loss: 0.2051593
+	speed: 0.0889s/iter; left time: 184.9078s
+Epoch: 3 cost time: 7.11828875541687
+Epoch: 3, Steps: 121 | Train Loss: 0.1895798 Jepa Loss: 0.2625607 Vali Loss: 0.4332408 Test Loss: 0.4304472
+Validation loss (0.433241).  Saving model ...
+EarlyStopping counter: 2 out of 10
+	iters: 100, epoch: 4 | loss: 0.1796062
+	speed: 0.0850s/iter; left time: 166.3618s
+Epoch: 4 cost time: 6.661108016967773
+Epoch: 4, Steps: 121 | Train Loss: 0.1869125 Jepa Loss: 0.2418198 Vali Loss: 0.4410478 Test Loss: 0.4247707
+Validation loss (0.441048).  Saving model ...
+EarlyStopping counter: 3 out of 10
+	iters: 100, epoch: 5 | loss: 0.1791374
+	speed: 0.0874s/iter; left time: 160.5572s
+Epoch: 5 cost time: 6.77108359336853
+Epoch: 5, Steps: 121 | Train Loss: 0.1848878 Jepa Loss: 0.2474741 Vali Loss: 0.4441092 Test Loss: 0.4257088
+Validation loss (0.444109).  Saving model ...
+EarlyStopping counter: 4 out of 10
+	iters: 100, epoch: 6 | loss: 0.1811665
+	speed: 0.0829s/iter; left time: 142.3306s
+Epoch: 6 cost time: 6.282619476318359
+Epoch: 6, Steps: 121 | Train Loss: 0.1840352 Jepa Loss: 0.2552384 Vali Loss: 0.4436919 Test Loss: 0.4258372
+EarlyStopping counter: 5 out of 10
+	iters: 100, epoch: 7 | loss: 0.1879466
+	speed: 0.0801s/iter; left time: 127.6861s
+Epoch: 7 cost time: 6.216006755828857
+Epoch: 7, Steps: 121 | Train Loss: 0.1832178 Jepa Loss: 0.2624240 Vali Loss: 0.4442479 Test Loss: 0.4275405
+EarlyStopping counter: 6 out of 10
+	iters: 100, epoch: 8 | loss: 0.1761976
+	speed: 0.0797s/iter; left time: 117.4425s
+Epoch: 8 cost time: 6.273386716842651
+Epoch: 8, Steps: 121 | Train Loss: 0.1833836 Jepa Loss: 0.2658493 Vali Loss: 0.4446185 Test Loss: 0.4267760
+EarlyStopping counter: 7 out of 10
+	iters: 100, epoch: 9 | loss: 0.1821275
+	speed: 0.0875s/iter; left time: 118.4245s
+Epoch: 9 cost time: 7.064403295516968
+Epoch: 9, Steps: 121 | Train Loss: 0.1831124 Jepa Loss: 0.2714086 Vali Loss: 0.4455224 Test Loss: 0.4269335
+EarlyStopping counter: 8 out of 10
+	iters: 100, epoch: 10 | loss: 0.1916246
+	speed: 0.0796s/iter; left time: 98.0999s
+Epoch: 10 cost time: 6.15232253074646
+Epoch: 10, Steps: 121 | Train Loss: 0.1828828 Jepa Loss: 0.2727949 Vali Loss: 0.4443628 Test Loss: 0.4263973
+EarlyStopping counter: 9 out of 10
+	iters: 100, epoch: 11 | loss: 0.1824930
+	speed: 0.0790s/iter; left time: 87.7181s
+Epoch: 11 cost time: 6.216176271438599
+Epoch: 11, Steps: 121 | Train Loss: 0.1829198 Jepa Loss: 0.2739254 Vali Loss: 0.4455507 Test Loss: 0.4265500
+EarlyStopping counter: 10 out of 10
+Early stopping
+>>>>>>>testing : ETTh1_512_336_TimeCapsule_ETTh1_ft[1, 8, 1]_slM_ll512_pl48_dm336_nh64_el1_dl1_df1024_fc1_ebtimeF_dtTrue_Exp_0<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+mse:0.4244682490825653, mae:0.43242594599723816

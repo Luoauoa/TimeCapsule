@@ -10,4 +10,3 @@
 ## New Updates
 
 - We search hyperparameters and add a new script for PEMS08.
-- We found that using MAE as the loss function can generally yield better results, however, the optimal configurations would be changed and necessitate further adjustments due to the new training dynamics. 

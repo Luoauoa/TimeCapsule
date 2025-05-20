@@ -1,6 +1,6 @@
 # README
 This is the official implementation of TimeCapsule presented in the paper "TimeCapsule: Solving the Jigsaw Puzzle of Long-Term Time Series
-Forecasting with Compressed Predictive Representations".
+Forecasting with Compressed Predictive Representations" <https://arxiv.org/abs/2504.12721>.
 
 🎉🎉**We are delighted to hear that our work has been accepted by KDD 2025!**
 ## Introduction

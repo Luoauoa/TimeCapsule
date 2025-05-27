@@ -22,7 +22,7 @@ From the overview of its architecture, it is likely to be a generative model (Ma
 
 3. Change to the correct path, then use bash to run the specific script file, e.g., `bash ./scripts/traffic.sh`.
 
-## Words from Authors
+## Acknowledgment
 > 1. We recognise that this is an imperfect work. Please let us know if you have any questions or suggestions about the code or specific techniques in the paper.
 > 
 > 2. Please consider starring this repository and citing our research if you find the paper interesting or this repo helpful.
@@ -35,3 +35,6 @@ From the overview of its architecture, it is likely to be a generative model (Ma
   year={2025}
 }
 ```
+We appreciate the following repos for their valuable code and efforts.
+- PatchTST
+- iTransformer

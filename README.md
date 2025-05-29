@@ -24,7 +24,7 @@ From the overview of its architecture, it is likely to be a generative model (Ma
 
 ## Acknowledgment
 > 1. We recognize that this is an imperfect work. Please let us know if you have any questions or suggestions about the code or specific techniques in the paper.
-> 2. It is recommended to **increase the length of compression parameters** when using ***short look-back windows*** (e.g., 96).  
+> 2. It is recommended to **increase the length of compression parameters** when using ***short look-back windows***, other hyperparameters should also be adjusted accordingly.  
 > 3. Please consider starring this repository and citing our research if you find the paper interesting or this repo helpful.
 
 ```bibtex

@@ -2,7 +2,7 @@
 This is the official implementation of TimeCapsule presented in the paper "TimeCapsule: Solving the Jigsaw Puzzle of Long-Term Time Series
 Forecasting with Compressed Predictive Representations" <https://arxiv.org/abs/2504.12721>.
 
-🎉🎉**We are delighted to hear that our work has been accepted by KDD 2025!**
+🎉🎉**We are delighted to hear that our work has been accepted by KDD 2025**
 ## Introduction
 TL;DR
 ![image](https://github.com/user-attachments/assets/1d45428d-f14d-4674-8883-4a3c15f06756)

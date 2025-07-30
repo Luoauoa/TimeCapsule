@@ -119,13 +119,19 @@ def test_params_flop(model,x_shape):
 
 def ema_update(updated_value, new_value, decay=0.996, type='model'):
     if type == 'model':
-        for history_param, new_param in zip(updated_value.parameters(), new_value.parameters()):
-            history_param.data.copy_(decay * history_param.data + (1 - decay) * new_param.data)
-            history_param.requires_grad_(False)
+        if decay == 0.0:
+            updated_value.load_state_dict(new_value.state_dict())
+            return updated_value
+
+        new_state_dict = new_value.state_dict()
+        old_state_dict = updated_value.state_dict()
+        for key in old_state_dict.keys():
+            old_state_dict[key].data.copy_(
+                old_state_dict[key].data * decay + new_state_dict[key].data * (1 - decay)
+            )
         return updated_value
-    # else
-    updated_value = decay * updated_value + (1 - decay) * new_value
-    return updated_value
+    else:
+        return updated_value * decay + new_value * (1 - decay)
 
 
 def mean_filter(seq, window_size=10):

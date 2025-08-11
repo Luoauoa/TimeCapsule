@@ -8,7 +8,7 @@ Forecasting with Compressed Predictive Representations" <https://arxiv.org/abs/2
 TL;DR
 ![image](https://github.com/user-attachments/assets/1d45428d-f14d-4674-8883-4a3c15f06756)
 
-From the overview of its architecture, it is likely to be a generative model (May also be applicable for time series generation). This model can be interpreted in multiple ways. To understand one of the motivations and ideas for developing such an architecture, we paraphrase parts of our rebuttal in the conference as a detailed explanation here:
+This model can be interpreted in multiple ways. To understand one of the motivations and ideas for developing such an architecture, we paraphrase parts of our rebuttal in the conference as a detailed explanation here:
 
 >The core components of TimeCapsule—3D tensor modeling, encoder compression, and decoder recovery—are theoretically grounded in (inspired by) modern lossy compression techniques (e.g., bits-back coding) and low-rank tensor recovery principles (related to matrix recovery and compressive sensing). The theoretical foundations for these design choices can be found in the cited references. Specifically, achieving a forecaster with satisfactory generality requires an implicit self-supervised learning strategy capable of efficiently and effectively recognizing the specific properties of each time series before making predictions. Therefore, we chose this compression and recovery framework, rooted in specific theorems. Through this framework, we hope the neural network not only purifies redundant information but also learns to decompose, analyze, and recreate the underlying mechanisms of different time series (as well as keeping the capability of long-range information utilization).
 

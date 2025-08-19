@@ -7,7 +7,7 @@ Forecasting with Compressed Predictive Representations" <https://arxiv.org/abs/2
 ## Introduction
 TL;DR
 ![image](https://github.com/user-attachments/assets/1d45428d-f14d-4674-8883-4a3c15f06756)
-
+See our oral slides for detailed motivations and explanations regarding the model. [slides](https://github.com/Luoauoa/TimeCapsule/blob/master/oral%20slides.pdf)
 ## Get Started
 1. Please download the dataset you need at [Google Drive](https://drive.google.com/file/d/1l51QsKvQPcqILT3DwfjCgx8Dsg2rpjot/view?usp=drive_link) or [Baidu Cloud](https://pan.baidu.com/s/11AWXg1Z6UwjHzmto4hesAA?pwd=9qjr).
 

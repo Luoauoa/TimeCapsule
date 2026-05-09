@@ -1,5 +1,5 @@
 # README 
-This is the official implementation of TimeCapsule presented in the paper "TimeCapsule: Solving the Jigsaw Puzzle of Long-Term Time Series
+[KDD2025] This is the official implementation of TimeCapsule presented in the paper "TimeCapsule: Solving the Jigsaw Puzzle of Long-Term Time Series
 Forecasting with Compressed Predictive Representations" <https://arxiv.org/abs/2504.12721>.<img width="36" height="50" alt="Dream_Timer_Ball_Sprite" src="https://github.com/user-attachments/assets/faaac99e-eba9-433e-a2af-aed6b648bcf4" />
 
 
